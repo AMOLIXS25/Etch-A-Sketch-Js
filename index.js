@@ -38,6 +38,13 @@ const initializeColorPalette = (randomColorPalette) => {
 }
 
 
+const changeColorPalette = async () => {
+    const colorPaletteContainer = document.querySelector('.color-palette-container'); 
+    colorPaletteContainer.textContent = '';
+    initializeColorPalette(await getRandomColorPalette());
+}
+
+
 const getRandomColorPalette = async () => {
     let randomColorPalette = [];
     const res = await fetch('https://x-colors.yurace.pro/api/random?number=12');
@@ -54,10 +61,19 @@ const resetGridButtonListenerManager = () => {
 }
 
 
+const changePaletteColorButtonListenerManager = () => {
+    const changePaletteColorButton = document.querySelector('.change-palette-color-button');
+    changePaletteColorButton.addEventListener('click', () => {
+        changeColorPalette();
+    });
+}
+
+
 const main = async () => {
     initializeGrid(32, 32);
     initializeColorPalette(await getRandomColorPalette());
     resetGridButtonListenerManager();
+    changePaletteColorButtonListenerManager();
 }
 
 
