@@ -73,6 +73,35 @@ section.drawing .drawing-grid-container .square {
 }
 
 /**
+=========== BUTTONS ========
+*/
+section.buttons .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    width: 70vh;
+    margin: 0 auto 1rem auto;
+    gap: 0.8rem;
+}
+
+section.buttons .buttons-container button {
+    width: 33%;
+    padding: 5px;
+    background-color: rgb(30 41 59);
+    border: 1px solid rgb(51 65 85);
+    font-family: 'Poppins', sans-serif;
+    color: #e2e8f0;
+    font-size: 0.9em;
+    transform: scale(1);
+    border-radius: 5px;
+    transition: transform 0.4s;
+}
+
+section.buttons .buttons-container button:hover {
+    transform: scale(1.01);
+    border: 1px solid rgb(65, 83, 107);
+}
+
+/**
 =========== FOOTER ========
 */
 
