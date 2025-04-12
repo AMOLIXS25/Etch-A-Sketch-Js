@@ -17,6 +17,13 @@ const initializeGrid = (resolutionWidth, resolutionHeight) => {
 }
 
 
+const resetGrid = () => {
+    const drawingGridContainer = document.querySelector('.drawing-grid-container');
+    drawingGridContainer.textContent = '';
+    initializeGrid(32, 32);
+}
+
+
 const initializeColorPalette = (randomColorPalette) => {
     const colorPaletteContainer = document.querySelector('.color-palette-container'); 
     randomColorPalette.forEach((color) => {
@@ -39,9 +46,18 @@ const getRandomColorPalette = async () => {
 }
 
 
+const resetGridButtonListenerManager = () => {
+    const resetGridButton = document.querySelector('.reset-button');
+    resetGridButton.addEventListener('click', () => {
+        resetGrid();
+    })
+}
+
+
 const main = async () => {
     initializeGrid(32, 32);
     initializeColorPalette(await getRandomColorPalette());
+    resetGridButtonListenerManager();
 }
 
 
