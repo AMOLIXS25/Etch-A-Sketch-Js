@@ -26,6 +26,28 @@ header h1 {
 }
 
 /**
+======= DRAWING GRID ======
+*/
+
+section.drawing .drawing-grid-container {
+    background-color: rgb(30 41 59);
+    border: 1px solid rgb(51 65 85);
+    border-radius: 6px;
+    display: flex;
+    margin: 0 auto;
+    width: 75vh;
+    height: 75vh;
+    flex-wrap: wrap;
+}
+
+section.drawing .drawing-grid-container .square {
+    border: 1px solid rgb(148 163 184);
+    width: 6.25%;
+    height: 6.25%;
+}
+
+
+/**
 =========== FOOTER ========
 */
 
