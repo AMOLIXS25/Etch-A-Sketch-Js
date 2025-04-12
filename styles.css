@@ -42,8 +42,6 @@ section.drawing .drawing-grid-container {
 
 section.drawing .drawing-grid-container .square {
     border: 1px solid rgb(148 163 184);
-    width: 6.25%;
-    height: 6.25%;
 }
 
 
