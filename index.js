@@ -1,4 +1,5 @@
 let currentColor = '';
+let resolution = 16;
 
 const initializeGrid = (resolutionWidth, resolutionHeight) => {
     const totalResolution = resolutionWidth * resolutionHeight;
@@ -20,7 +21,7 @@ const initializeGrid = (resolutionWidth, resolutionHeight) => {
 const resetGrid = () => {
     const drawingGridContainer = document.querySelector('.drawing-grid-container');
     drawingGridContainer.textContent = '';
-    initializeGrid(32, 32);
+    initializeGrid(resolution, resolution);
 }
 
 
@@ -69,10 +70,25 @@ const changePaletteColorButtonListenerManager = () => {
 }
 
 
+const changeResolutionButtonListenerManager = () => {
+    const resetGridButton = document.querySelector('.change-resolution-button');
+    resetGridButton.addEventListener('click', () => {
+        while (true) {
+            newResolution = parseInt(prompt('Enter a new resolution max 100'));
+            if (newResolution <= 100) break;
+            else alert('Max 100 !') 
+        }
+        resolution = newResolution;
+        resetGrid();
+    })
+}
+
+
 const main = async () => {
-    initializeGrid(32, 32);
+    initializeGrid(resolution, resolution);
     initializeColorPalette(await getRandomColorPalette());
     resetGridButtonListenerManager();
+    changeResolutionButtonListenerManager();
     changePaletteColorButtonListenerManager();
 }
 
