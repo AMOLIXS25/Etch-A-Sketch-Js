@@ -15,8 +15,28 @@ const initializeGrid = (resolutionWidth, resolutionHeight) => {
 }
 
 
-const main = () => {
+const initializeColorPalette = (randomColorPalette) => {
+    const colorPaletteContainer = document.querySelector('.color-palette-container'); 
+    randomColorPalette.forEach((color) => {
+        const colorToIncorporateToTheColorPaletteContainer = document.createElement('div');
+        colorToIncorporateToTheColorPaletteContainer.className = 'color';
+        colorToIncorporateToTheColorPaletteContainer.style.backgroundColor = color.hex;
+        colorPaletteContainer.appendChild(colorToIncorporateToTheColorPaletteContainer);
+    });
+}
+
+
+const getRandomColorPalette = async () => {
+    let randomColorPalette = [];
+    const res = await fetch('https://x-colors.yurace.pro/api/random?number=12');
+    randomColorPalette = await res.json();
+    return randomColorPalette;
+}
+
+
+const main = async () => {
     initializeGrid(32, 32);
+    initializeColorPalette(await getRandomColorPalette());
 }
 
 
