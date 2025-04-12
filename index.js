@@ -1,3 +1,5 @@
+let currentColor = '';
+
 const initializeGrid = (resolutionWidth, resolutionHeight) => {
     const totalResolution = resolutionWidth * resolutionHeight;
     const squareWidth = 100 / resolutionWidth;
@@ -9,7 +11,7 @@ const initializeGrid = (resolutionWidth, resolutionHeight) => {
         newSquare.style.cssText = `width: ${squareWidth}%; height: ${squareHeight}%`;
         drawingGridContainer.appendChild(newSquare);
         newSquare.addEventListener('mouseover', () => {
-            newSquare.style.backgroundColor = 'red';
+            newSquare.style.backgroundColor = currentColor;
         });
     }
 }
@@ -20,8 +22,11 @@ const initializeColorPalette = (randomColorPalette) => {
     randomColorPalette.forEach((color) => {
         const colorToIncorporateToTheColorPaletteContainer = document.createElement('div');
         colorToIncorporateToTheColorPaletteContainer.className = 'color';
-        colorToIncorporateToTheColorPaletteContainer.style.backgroundColor = color.hex;
+        colorToIncorporateToTheColorPaletteContainer.style.backgroundColor = color.rgb;
         colorPaletteContainer.appendChild(colorToIncorporateToTheColorPaletteContainer);
+        colorToIncorporateToTheColorPaletteContainer.addEventListener('click', (event) => {
+            currentColor = event.target.style.backgroundColor;
+        });
     });
 }
 
