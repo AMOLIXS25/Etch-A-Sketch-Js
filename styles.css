@@ -25,6 +25,14 @@ header h1 {
     text-align: center;
 }
 
+header p {
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+    color: #e2e8f0;
+    margin: 0;
+}
+
 /**
 ======= DRAWING GRID ======
 */
@@ -64,6 +72,16 @@ section.drawing .drawing-grid-container .square {
     transform: scale(1);
     transition: top 0.2s;
     transition: transform 0.2s;
+}
+
+.active {
+    position: relative !important;
+    top: -2px !important;
+    transform: scale(1.03) !important;
+    border: 1px solid rgb(112, 144, 185);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .color-palette-container .color:hover {

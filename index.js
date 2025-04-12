@@ -1,5 +1,7 @@
 let currentColor = '';
 let resolution = 16;
+let eraserMode = false;
+
 
 const initializeGrid = (resolutionWidth, resolutionHeight) => {
     const totalResolution = resolutionWidth * resolutionHeight;
@@ -11,8 +13,12 @@ const initializeGrid = (resolutionWidth, resolutionHeight) => {
         newSquare.className = 'square';
         newSquare.style.cssText = `width: ${squareWidth}%; height: ${squareHeight}%`;
         drawingGridContainer.appendChild(newSquare);
-        newSquare.addEventListener('mouseover', () => {
-            newSquare.style.backgroundColor = currentColor;
+        newSquare.addEventListener('mouseover', () => {  
+            if (eraserMode && newSquare.style.backgroundColor == currentColor) {
+                newSquare.style.backgroundColor = 'transparent';
+            } else if (!eraserMode) {
+                newSquare.style.backgroundColor = currentColor;
+            }
         });
     }
 }
@@ -33,8 +39,21 @@ const initializeColorPalette = (randomColorPalette) => {
         colorToIncorporateToTheColorPaletteContainer.style.backgroundColor = color.rgb;
         colorPaletteContainer.appendChild(colorToIncorporateToTheColorPaletteContainer);
         colorToIncorporateToTheColorPaletteContainer.addEventListener('click', (event) => {
+            resetAllActiveClassNameForColorToThePaletteColor();
+            event.target.className = 'color active';
+            event.target.textContent = '✒️'
+            eraserMode = false;
             currentColor = event.target.style.backgroundColor;
         });
+    });
+}
+
+
+const resetAllActiveClassNameForColorToThePaletteColor = () => {
+    const allColors = document.querySelectorAll('.color');
+    allColors.forEach((color) => {
+        color.textContent = '';
+        color.className = 'color';
     });
 }
 
@@ -83,6 +102,22 @@ const changeResolutionButtonListenerManager = () => {
     })
 }
 
+const eraserCurrentColorListenerManager = () => {
+    const body = document.querySelector('body');
+    body.addEventListener('keypress', (event) => {
+        if (event.key === 'r') {
+            const activeColorToThePaletteColor = document.querySelector('.active');
+            if (eraserMode === true) {
+                activeColorToThePaletteColor.textContent = '✒️';
+                eraserMode = false;
+            } else {
+                eraserMode = true;
+                activeColorToThePaletteColor.textContent = '🧽';
+            }
+        }
+    });
+}
+
 
 const main = async () => {
     initializeGrid(resolution, resolution);
@@ -90,6 +125,7 @@ const main = async () => {
     resetGridButtonListenerManager();
     changeResolutionButtonListenerManager();
     changePaletteColorButtonListenerManager();
+    eraserCurrentColorListenerManager();
 }
 
 
