@@ -8,6 +8,9 @@ const initializeGrid = (resolutionWidth, resolutionHeight) => {
         newSquare.className = 'square';
         newSquare.style.cssText = `width: ${squareWidth}%; height: ${squareHeight}%`;
         drawingGridContainer.appendChild(newSquare);
+        newSquare.addEventListener('mouseover', () => {
+            newSquare.style.backgroundColor = 'red';
+        });
     }
 }
 
