@@ -16,7 +16,7 @@ const initializeGrid = (resolutionWidth, resolutionHeight) => {
 
 
 const main = () => {
-    initializeGrid(16, 16);
+    initializeGrid(32, 32);
 }
 
 
