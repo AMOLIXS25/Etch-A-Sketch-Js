@@ -102,6 +102,7 @@ const changeResolutionButtonListenerManager = () => {
     })
 }
 
+
 const eraserCurrentColorListenerManager = () => {
     const body = document.querySelector('body');
     body.addEventListener('keypress', (event) => {
@@ -119,7 +120,27 @@ const eraserCurrentColorListenerManager = () => {
 }
 
 
+const initializeToggleThemeButtonIcon = () => {
+    const toggleThemeButtonIcon = document.querySelector('.toggle-theme-button');
+    const backgroundColorToggleThemeButtonIcon = getComputedStyle(toggleThemeButtonIcon).backgroundColor;
+    toggleThemeButtonIcon.textContent = backgroundColorToggleThemeButtonIcon === 'rgb(43, 58, 83)' ? '🌑' : '☀️';
+}
+
+
+const initializeToggleThemeButtonListener = () => {
+    const toggleThemeButtonIcon = document.querySelector('.toggle-theme-button');
+    toggleThemeButtonIcon.addEventListener('click', () => {
+        const documentRoot = document.documentElement;
+        const backgroundColorToggleThemeButtonIcon = getComputedStyle(toggleThemeButtonIcon).backgroundColor;
+        documentRoot.className = documentRoot.className === 'dark' || backgroundColorToggleThemeButtonIcon === 'rgb(43, 58, 83)' ? 'light' : 'dark';
+        initializeToggleThemeButtonIcon();
+    });
+}
+
+
 const main = async () => {
+    initializeToggleThemeButtonListener();
+    initializeToggleThemeButtonIcon();
     initializeGrid(resolution, resolution);
     initializeColorPalette(await getRandomColorPalette());
     resetGridButtonListenerManager();
