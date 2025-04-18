@@ -1,12 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+:root {
+    --bg-image: url('./img/bg-light.PNG');
+    --text-color: rgb(30 41 59);
+    --button-color: #e2e8f0;
+    --title-text-shadow-color: rgba(61, 82, 117, 0.454);
+    --drawing-grid-bg-color: rgb(246, 242, 242);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-image: url('./img/bg-dark.PNG');
+        --text-color: #e2e8f0;
+        --button-color: #e2e8f0;
+        --title-text-shadow-color: #e2e8f07f;
+        --drawing-grid-bg-color: rgb(30 41 59);
+        --drawing-grid-border-color: rgb(51 65 85);
+    }
+}
+
+:root.dark {
+    --bg-image: url('./img/bg-dark.PNG');
+    --text-color: #e2e8f0;
+    --button-color: #e2e8f0;
+    --title-text-shadow-color: #e2e8f07f;
+    --drawing-grid-bg-color: rgb(30 41 59);
+    --drawing-grid-border-color: rgb(51 65 85);
+}
+
+:root.light {
+    --bg-image: url('./img/bg-light.PNG');
+    --text-color: rgb(30 41 59);
+    --button-color: #e2e8f0;
+    --title-text-shadow-color: rgba(61, 82, 117, 0.454);
+    --drawing-grid-bg-color: rgb(246, 242, 242);
+}
+
 *, *::after, *::before {
     box-sizing: border-box;
+    color: var(--text-color);
 }
 
 body {
     margin: 0;
-    background: url('./img/bg.PNG');
+    background: var(--bg-image);
     font-family: "Poppins", sans-serif;
     display: flex;
     flex-direction: column;
@@ -19,9 +56,8 @@ body {
 */
 
 header h1 {
-    color: #e2e8f0;
     font-size: 2.3em;
-    text-shadow: 0 3px #e2e8f07f;
+    text-shadow: 0 3px var(--title-text-shadow-color);
     text-align: center;
 }
 
@@ -29,7 +65,6 @@ header p {
     position: fixed;
     bottom: 0;
     right: 10px;
-    color: #e2e8f0;
     margin: 0;
 }
 
@@ -38,8 +73,8 @@ header p {
 */
 
 section.drawing .drawing-grid-container {
-    background-color: rgb(30 41 59);
-    border: 1px solid rgb(51 65 85);
+    background-color: var(--drawing-grid-bg-color);
+    border: 1px solid var(--drawing-grid-border-color);
     border-radius: 6px;
     display: flex;
     margin: 0 auto;
@@ -107,10 +142,10 @@ section.buttons .buttons-container button {
     background-color: rgb(30 41 59);
     border: 1px solid rgb(51 65 85);
     font-family: 'Poppins', sans-serif;
-    color: #e2e8f0;
     font-size: 0.9em;
     transform: scale(1);
     border-radius: 5px;
+    color: var(--button-color);
     transition: transform 0.4s;
 }
 
@@ -125,6 +160,5 @@ section.buttons .buttons-container button:hover {
 
 footer {
     text-align: center;
-    color: #e2e8f0a3;
     padding: 1rem 0;
 }
