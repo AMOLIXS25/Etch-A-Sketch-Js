@@ -4,7 +4,8 @@ A modern and colorful take on the classic Etch-a-Sketch toy — built as part of
 
 ## 📷 Preview
 
-![dd23](https://github.com/user-attachments/assets/15bfdaa8-4699-4aca-9755-d6cf43ad7fef)
+![ddff23](https://github.com/user-attachments/assets/b4f1d1cd-eb35-4a37-a194-0a8283f540f6)
+
 
 ## 🌟 Features
 
